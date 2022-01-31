@@ -1,12 +1,14 @@
-<div class="col offset-5 mydiv">
-  <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
-    <input ngModel #name type="text" name="name"><br>
-    <input ngModel #phone type="number" name="phone"><br>
-     <button  class="btn-success">Send</button>
+<div class="mydiv mydiv">
+  <form class="myform" (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+    <input ngModel #name type="text" name="name" required><br>
+    <input ngModel #phone type="number" name="phone" required><br>
+     <button [disabled]="!form.valid" class="btn  btn-success">Send</button>
    </form>
-</div>
 
+
+<button class="btn btn-warning" (onclick)='getList()'>Refresh List</button>
 <ul>
 
   <li *ngFor="let item of myList">{{item.name}} , {{item.phone}}</li>
 </ul>
+</div>  

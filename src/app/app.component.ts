@@ -20,6 +20,15 @@ myList:any
 
    
   }
+  getList()
+  {
+    this.servie.getDataList().subscribe((data:any)=>{
+
+      this.myList=data.data
+      console.log(data.data);
+      
+  })
+}
 
   onSubmit(dataform:any){
   this.servie.sendData(dataform)
