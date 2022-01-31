@@ -20,6 +20,8 @@ myList:any
 
    
   }
+
+  //to refresh the list after a new Entry
   getList()
   {
     this.servie.getDataList().subscribe((data:any)=>{
@@ -30,6 +32,7 @@ myList:any
   })
 }
 
+//sending form data to nodejs then to MongoDB
   onSubmit(dataform:any){
   this.servie.sendData(dataform)
  
