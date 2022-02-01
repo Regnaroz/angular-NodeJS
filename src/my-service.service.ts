@@ -15,6 +15,7 @@ export class MyServiceService {
   }
 
   sendData(data:any){
+    
       const header = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -24,12 +25,7 @@ export class MyServiceService {
       headers: new HttpHeaders(header),
     };
     
-    return this.httpClient.post<any>('http://localhost:3000/api/mypost',data,requestOptions).subscribe((data:any)=>{
-     console.log(data);
-     
-     
-
-    })
+    return this.httpClient.post<any>('http://localhost:3000/api/mypost',data,requestOptions)
   }
 }
 

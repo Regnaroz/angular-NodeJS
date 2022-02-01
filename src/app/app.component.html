@@ -1,4 +1,5 @@
 <div class="mydiv mydiv">
+
   <form class="myform" (ngSubmit)="onSubmit(form.value)" #form="ngForm">
     <input ngModel #name type="text" name="name" required><br>
     <input ngModel #phone type="number" name="phone" required><br>
@@ -6,9 +7,10 @@
    </form>
 
 
-<button class="btn btn-warning" (onclick)='getList()'>Refresh List</button>
 <ul>
 
   <li *ngFor="let item of myList">{{item.name}} , {{item.phone}}</li>
 </ul>
+
+
 </div>  

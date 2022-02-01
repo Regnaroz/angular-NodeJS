@@ -1,42 +1,39 @@
-import { Component } from '@angular/core';
-import { MyServiceService } from 'src/my-service.service';
-import { FormsModule } from '@angular/forms';
+import { Component } from "@angular/core";
+import { MyServiceService } from "src/my-service.service";
+import { FormsModule } from "@angular/forms";
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
+  myList: any;
 
-myList:any
-  constructor(private servie:MyServiceService){
-
-  servie.getDataList().subscribe((data:any)=>{
-
-    this.myList=data.data
-     
-    
-   })
-
-   
+  constructor(private servie: MyServiceService) {
+    servie.getDataList().subscribe((data: any) => {
+      this.myList = data.data;
+      console.log(data);
+      
+    });
   }
 
   //to refresh the list after a new Entry
-  getList()
-  {
-    this.servie.getDataList().subscribe((data:any)=>{
+  getList() {
+    this.servie.getDataList().subscribe((data: any) => {
+      this.myList = data.data;
+      console.log("reee");
 
-      this.myList=data.data
       console.log(data.data);
-      
-  })
-}
-
-//sending form data to nodejs then to MongoDB
-  onSubmit(dataform:any){
-  this.servie.sendData(dataform)
- 
-
+    });
   }
-  
+
+  //sending form data to nodejs then to MongoDB
+  onSubmit(dataform: any) {
+    this.servie.sendData(dataform).subscribe((data: any) => {
+      console.log(data);
+      this.servie.getDataList().subscribe((data: any) => {
+        this.myList = data.data;
+      });
+    });
+  }
 }
