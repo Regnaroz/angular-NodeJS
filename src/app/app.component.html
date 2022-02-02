@@ -7,10 +7,8 @@
    </form>
 
 
-<ul>
-
-  <li *ngFor="let item of myList">{{item.name}} , {{item.phone}}</li>
-</ul>
 
 
-</div>  
+
+</div>
+<ngx-json-viewer [json]="myList" [expanded]="false"></ngx-json-viewer>

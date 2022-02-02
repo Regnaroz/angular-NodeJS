@@ -8,12 +8,11 @@ import { FormsModule } from "@angular/forms";
 })
 export class AppComponent {
   myList: any;
-
   constructor(private servie: MyServiceService) {
     servie.getDataList().subscribe((data: any) => {
       this.myList = data.data;
       console.log(data);
-      
+
     });
   }
 
