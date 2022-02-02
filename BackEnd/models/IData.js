@@ -8,3 +8,5 @@ const mySchema=myMongoos.Schema({
 });
 
 module.exports=myMongoos.model('IData',mySchema)
+
+

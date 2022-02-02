@@ -4,7 +4,9 @@ const cors = require("cors"); //npm
 const app = express();
 const mongoos = require("mongoose"); //npm
 const IData = require("./models/IData"); //created folder called models and made this interface
-const Statemnt = require("./models/statement")
+const Statemnt = require("./models/statement");
+const { json } = require("express");
+
 //moongo local url mongodb://127.0.0.1:27017/DatabaseName
 const url = "mongodb://127.0.0.1:27017/myDB";
 mongoos.connect(url, { useNewUrlParser: true });
