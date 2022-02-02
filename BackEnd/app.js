@@ -4,7 +4,9 @@ const cors = require("cors"); //npm
 const app = express();
 const mongoos = require("mongoose"); //npm
 const IData = require("./models/IData"); //created folder called models and made this interface
-const Statemnt = require("./models/statement")
+const Statemnt = require("./models/statement");
+const { json } = require("express");
+
 //moongo local url mongodb://127.0.0.1:27017/DatabaseName
 const url = "mongodb://127.0.0.1:27017/myDB";
 mongoos.connect(url, { useNewUrlParser: true });
@@ -30,7 +32,7 @@ app.use("", (req, res, next) => {
 app.get("/api/getData", (req, res, next) => {
   //calling the interface *dto* from the models file , since it has the mongoose import it will work as mongood object
 
-  IData.find() //find() you need to write it , it will not pop out
+  Statemnt.find() //find() you need to write it , it will not pop out
     .then((data) => {
       res.status(200).json({
         result: true,
@@ -57,7 +59,7 @@ app.put('/LRS/xAPI/activities/state',(req,res,next)=>{
 app.post('/LRS/xAPI/statements',(req,res,next)=>{
   try{
 
-    console.log(req.body.length);
+    console.log(req.body);
     
     for(let i = 0 ; i <req.body.length ;i++){
       

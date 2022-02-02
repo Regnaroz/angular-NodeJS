@@ -10,6 +10,8 @@ export class MyServiceService {
 
   }
 
+  
+
   getDataList(){
   return  this.httpClient.get('http://localhost:3000/api/getData')
   }
