@@ -1,23 +1,37 @@
-import { importExpr } from '@angular/compiler/src/output/output_ast';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { NgxJsonViewerModule } from 'ngx-json-viewer';
-
-
+import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FieldsetModule} from 'primeng/fieldset';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import {InputTextModule} from 'primeng/inputtext';
+import { ReviewDialogComponent } from './assets/Components/review-dialog/review-dialog.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReviewDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FieldsetModule,
     FormsModule,
-    NgxJsonViewerModule
+    InputTextModule,
+    ButtonModule,
+    TableModule,
+    MatButtonModule,
+    MatDialogModule,
+    BrowserAnimationsModule
+    
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

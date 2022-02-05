@@ -1,0 +1,9 @@
+.closeBtn{
+    position: sticky;
+}
+.p-fieldset.p-fieldset-toggleable .p-fieldset-legend a {
+    padding: 1.25rem;
+    color: #96bfe7;
+    border-radius: 6px;
+    transition: box-shadow 0.2s;
+}

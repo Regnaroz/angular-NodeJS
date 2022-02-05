@@ -5,10 +5,29 @@
     <input ngModel #phone type="number" name="phone" required><br>
      <button [disabled]="!form.valid" class="btn  btn-success">Send</button>
    </form>
+ <div class="row container">
 
-
-
-
-
+ </div>
+ 
 </div>
-<ngx-json-viewer [json]="myList" [expanded]="false"></ngx-json-viewer>
+
+<p-table class='mytable'[value]="ScormResult" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Name</th>
+          <th>File Name</th>
+          <th>Score</th>
+        
+           <th>Action</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+      <tr *ngFor="let stm of ScormResult">
+          <td>{{stm.StatemntBody.actor.name}}</td>
+          <td>{{stm.StatemntBody.object.definition.name.und}}</td>
+          <td [ngStyle]="{'color': stm.StatemntBody.result.score.scaled>=0.5 ? 'green' : 'red'}">{{stm.StatemntBody.result.score.scaled*100|number:'1.0-1'}} %</td>
+        
+         <td><button (click)='openReviewDialog(stm.StatemntBody.actor.name,stm.StatemntBody.actor.mbox,stm)' _ngcontent-ckh-c51="" pbutton="" pripple="" type="button" label="Help" class=" mybtn p-element p-ripple p-button-help p-button p-component"><span class="p-button-label">Review</span><span class="p-ink " style="height: 69px; width: 69px; top: -8.10004px; left: 1.20001px;"></span></button></td>
+      </tr>
+  </ng-template>
+</p-table>

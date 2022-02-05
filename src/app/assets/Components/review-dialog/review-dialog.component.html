@@ -1,0 +1,30 @@
+<div class="row-12">
+    <h3 class="col-6">{{stm.StatemntBody.actor.name}} 's  {{stm.StatemntBody.object.definition.name.und}} Review</h3>
+    <h3 class="col" [ngStyle]="{'color': stm.StatemntBody.result.score.scaled>=0.5 ? 'green' : 'red'}">Score : {{stm.StatemntBody.result.score.scaled *100|number:'1.0-1'}} %</h3>
+</div>
+
+
+<p-fieldset  *ngFor="let question of QuizzQuestionsList;let count=index"  [ngStyle]="{'color': question.StatemntBody.result.success ? ' green !important' : 'red'}"  legend="Question {{count+1}}" [toggleable]="true">
+    <div >
+    <b>{{question.StatemntBody.object.definition.description.und}}</b>
+    <br>
+    <!--checking what is the type of the question multiple choice , input fill in and more can be added in future-->
+    <div *ngIf="question.StatemntBody.object.definition.interactionType=='choice'">
+      <br>
+        <div class="" *ngFor="let choice of question.StatemntBody.object.definition.choices,let i=index">
+            <i > {{i+1}} - {{choice.id| slice:2}}</i>
+        </div>
+  <br>
+        <div class="row-12">
+            <i class="offset-2 col-5" style="color: rgb(155, 155, 77);">Your Answer was :<b>{{question.StatemntBody.result.response| slice:2}}</b></i>
+            <i  style='color:green;'class="offset-2 col-4">The Correct Answer  :<b *ngFor="let answer of question.StatemntBody.object.definition.correctResponsesPattern">{{answer| slice:2}}</b></i>
+        </div>
+    </div>
+    <div *ngIf="question.StatemntBody.object.definition.interactionType=='fill-in'">
+        
+<i style="color: rgb(155, 155, 77);" > Your Answer : </i><input type="text" pInputText value={{question.StatemntBody.result.response}} disabled> 
+<i style='color:green;'class="offset-2 col-4"> The Correct Answer : </i><input *ngFor="let answer of question.StatemntBody.object.definition.correctResponsesPattern,let i=index" type="text" pInputText value={{answer}} disabled> 
+    </div>
+</div>
+</p-fieldset>
+<button  style="margin: 5px;" (click)="CloseDialog()" _ngcontent-iml-c51="" pbutton="" pripple="" type="button" label="Danger" class="closeBtn p-element p-ripple p-button-raised p-button-danger p-button p-component"><span class="p-button-label">Close</span><span class="p-ink" style="height: 87px; width: 87px; top: -10.4px; left: 36.7125px;"></span></button>
