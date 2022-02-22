@@ -24,15 +24,14 @@ export class ReviewDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //get only questions for the studendId,ScormID
+  //get only questions for the studendId ,ScormQuizzID
+
   getQuizzReview(stdId:any,scormId:number){
     console.log(stdId+'  '+scormId);
     
       this.service.getQuizzReview(stdId,scormId).subscribe((Stm:any)=>{
-        this.QuizzQuestionsList=Stm.data
-        
-        
-      })
+        this.QuizzQuestionsList=Stm.data 
+         })
   }
   CloseDialog(){
     this.dialog.closeAll()
